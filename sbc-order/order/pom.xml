@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.crossoverJie.request.check</groupId>
             <artifactId>request-check</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

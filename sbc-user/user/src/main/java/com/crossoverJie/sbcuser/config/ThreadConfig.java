@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.*;
 
@@ -26,7 +27,10 @@ public class ThreadConfig {
     @Value("${concurrent.blockqueue.size}")
     private int blockQueueSize;
 
-
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 
     @Bean(value = "concurrentTestThread")
     public ExecutorService build(){

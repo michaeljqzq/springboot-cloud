@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutorService;
 public class UserController implements UserService {
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    //@Autowired
+    @Autowired
     private RestTemplate restTemplate;
 
     @Autowired
@@ -53,8 +53,8 @@ public class UserController implements UserService {
         OrderNoReq req = new OrderNoReq();
         req.setReqNo("1213");
         //调用远程服务
-        ResponseEntity<Object> res = restTemplate.postForEntity("http://sbc-order/order/getOrderNo", req, Object.class);
-        logger.info("res=" + JSON.toJSONString(res));
+//        ResponseEntity<Object> res = restTemplate.postForEntity("http://localhost:8181/orderService/getOrderNo", req, Object.class);
+//        logger.info("res=" + JSON.toJSONString(res));
 
         logger.debug("入参=" + JSON.toJSONString(userReq));
         UserRes userRes = new UserRes();

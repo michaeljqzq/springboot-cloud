@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController implements OrderService{
     private final static Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
-    @Autowired
-    private RedisLimit redisLimit ;
+//    @Autowired
+//    private RedisLimit redisLimit;
 
     @Override
     @CheckReqNo
@@ -38,12 +38,12 @@ public class OrderController implements OrderService{
         BaseResponse<OrderNoResVO> res = new BaseResponse();
 
         //限流
-        boolean limit = redisLimit.limit();
-        if (!limit){
-            res.setCode(StatusEnum.REQUEST_LIMIT.getCode());
-            res.setMessage(StatusEnum.REQUEST_LIMIT.getMessage());
-            return res ;
-        }
+//        boolean limit = redisLimit.limit();
+//        if (!limit){
+//            res.setCode(StatusEnum.REQUEST_LIMIT.getCode());
+//            res.setMessage(StatusEnum.REQUEST_LIMIT.getMessage());
+//            return res ;
+//        }
 
         res.setReqNo(orderNoReq.getReqNo());
         if (null == orderNoReq.getAppId()){
@@ -58,7 +58,7 @@ public class OrderController implements OrderService{
     }
 
     @Override
-    @ControllerLimit
+//    @ControllerLimit
     public BaseResponse<OrderNoResVO> getOrderNoLimit(@RequestBody OrderNoReqVO orderNoReq) {
         BaseResponse<OrderNoResVO> res = new BaseResponse();
         res.setReqNo(orderNoReq.getReqNo());
@@ -74,7 +74,7 @@ public class OrderController implements OrderService{
     }
 
     @Override
-    @CommonLimit
+//    @CommonLimit
     public BaseResponse<OrderNoResVO> getOrderNoCommonLimit(@RequestBody OrderNoReqVO orderNoReq) {
         BaseResponse<OrderNoResVO> res = new BaseResponse();
         res.setReqNo(orderNoReq.getReqNo());

@@ -29,6 +29,7 @@ public class CheckReqCondition implements Condition {
             logger.warn("Need to configure redis!");
             return false ;
         }else {
+            logger.info("Found redis cluster property {}", clusterProperty);
             return true;
         }
 
