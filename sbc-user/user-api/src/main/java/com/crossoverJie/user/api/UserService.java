@@ -33,7 +33,7 @@ public interface UserService {
      */
     @ApiOperation("获取用户")
     @RequestMapping(value = "/getUser", method = RequestMethod.POST)
-    BaseResponse<UserResVO> getOrderNo(@RequestBody UserReqVO userReqVO) ;
+    BaseResponse<UserResVO> getUser(@RequestBody UserReqVO userReqVO) ;
 
     /**
      * 通过Feign获取用户

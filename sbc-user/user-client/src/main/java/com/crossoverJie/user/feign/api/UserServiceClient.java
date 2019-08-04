@@ -26,8 +26,8 @@ public interface UserServiceClient extends UserService{
 
     @Override
     @ApiOperation("获取用户")
-    @RequestMapping(value = "/getOrderNo", method = RequestMethod.POST)
-    BaseResponse<UserResVO> getOrderNo(@RequestBody UserReqVO orderNoReq) ;
+    @RequestMapping(value = "/getUser", method = RequestMethod.POST)
+    BaseResponse<UserResVO> getUser(@RequestBody UserReqVO orderNoReq) ;
 
 
     @Override

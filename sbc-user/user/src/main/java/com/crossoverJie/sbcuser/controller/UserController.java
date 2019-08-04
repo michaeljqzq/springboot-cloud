@@ -49,12 +49,17 @@ public class UserController implements UserService {
 
 
     @Override
-    public BaseResponse<UserResVO> getOrderNo(@RequestBody UserReqVO userReq) {
+    public BaseResponse<UserResVO> getUser(@RequestBody UserReqVO userReq) {
         OrderNoReq req = new OrderNoReq();
+        req.setAppId("1");
         req.setReqNo("1213");
+
         //调用远程服务
 //        ResponseEntity<Object> res = restTemplate.postForEntity("http://localhost:8181/orderService/getOrderNo", req, Object.class);
 //        logger.info("res=" + JSON.toJSONString(res));
+
+
+
 
         logger.debug("入参=" + JSON.toJSONString(userReq));
         UserRes userRes = new UserRes();
