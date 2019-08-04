@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisClusterConnection;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisClusterConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -33,9 +34,13 @@ public class RedisLimitConfig {
 
     @Bean
     public RedisLimit build() {
-        RedisClusterConnection clusterConnection = jedisConnectionFactory.getClusterConnection();
-        JedisCluster jedisCluster = (JedisCluster) clusterConnection.getNativeConnection();
-        RedisLimit redisLimit = new RedisLimit.Builder<>(jedisCluster)
+//        RedisClusterConnection clusterConnection = jedisConnectionFactory.getClusterConnection();
+//        JedisCluster jedis = (JedisCluster) clusterConnection.getNativeConnection();
+
+        RedisConnection connection = jedisConnectionFactory.getConnection();
+        Jedis jedis = (Jedis) connection.getNativeConnection();
+
+        RedisLimit redisLimit = new RedisLimit.Builder<>(jedis)
                 .limit(limit)
                 .build();
 

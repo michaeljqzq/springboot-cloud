@@ -1,5 +1,6 @@
 package com.crossoverJie.sbcorder.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.crossoverJie.order.api.OrderService;
 import com.crossoverJie.order.vo.req.OrderNoReqVO;
 import com.crossoverJie.order.vo.res.OrderNoResVO;
@@ -32,6 +33,7 @@ public class OrderController implements OrderService{
 //    @Autowired
 //    private RedisLimit redisLimit;
 
+
     @Override
     @CheckReqNo
     public BaseResponse<OrderNoResVO> getOrderNo(@RequestBody OrderNoReqVO orderNoReq) {
@@ -45,6 +47,7 @@ public class OrderController implements OrderService{
 //            return res ;
 //        }
 
+        LOGGER.info("入参=" + JSON.toJSONString(orderNoReq));
         res.setReqNo(orderNoReq.getReqNo());
         if (null == orderNoReq.getAppId()){
             throw new SBCException(StatusEnum.FAIL);
